@@ -1,9 +1,10 @@
+import Board from "./components/Board";
 import "./App.css";
 
 function App() {
   return (
     <div>
-      <div></div>
+      <Board />
     </div>
   );
 }
