@@ -1,0 +1,19 @@
+.square {
+  width: 75px;
+  height: 75px;
+  border: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrap {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+.column {
+  display: flex;
+  flex-direction: column-reverse;
+}
