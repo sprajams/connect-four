@@ -33,12 +33,16 @@ function Board() {
     ]);
   };
   return (
-    <div>
+    <div className={styles.outer}>
       <h2 className={styles.title}>
         {winner ? `${winner} wins!` : redTurn ? `Red's Turn` : `Yellow's Turn`}
       </h2>
 
-      {winner ? <button onClick={toRestart}>REMATCH?</button> : null}
+      {winner ? (
+        <button onClick={toRestart} className={styles.rematchBtn}>
+          REMATCH?
+        </button>
+      ) : null}
 
       <div className={styles.wrap}>
         {board.map((x, i) => {
@@ -73,13 +77,15 @@ function Board() {
                 );
                 // }
               })}
-              <DropBtn
-                redTurn={redTurn}
-                handleClick={handleClick}
-                columnNum={x}
-                // disable drop button if the column is full OR if there is a winner
-                disableBtn={!x.includes(null) || winner}
-              />
+              {winner ? null : (
+                <DropBtn
+                  redTurn={redTurn}
+                  handleClick={handleClick}
+                  columnNum={x}
+                  // disable drop button if the column is full OR if there is a winner
+                  disableBtn={!x.includes(null) || winner}
+                />
+              )}
             </div>
           );
         })}
