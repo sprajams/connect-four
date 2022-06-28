@@ -1,39 +1,47 @@
-.title {
-  text-align: center;
-  padding: 20px;
-}
 .square {
-  width: 75px;
-  height: 75px;
-  border: 1px solid grey;
+  width: 50px;
+  height: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: rgb(24, 24, 179);
+  @media (min-width: 768px) {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 .wrap {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 .column {
   display: flex;
   flex-direction: column-reverse;
 }
-
-.yellow {
-  background-color: rgb(234, 234, 39);
-}
-.red {
-  background-color: rgb(219, 46, 46);
-}
 .circle {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
+  background-color: white;
+  border: 5px solid rgb(248, 248, 248);
+  @media (min-width: 768px) {
+    width: 50px;
+    height: 50px;
+  }
+}
+.yellow {
+  background-color: rgb(249, 249, 42);
+  border: 5px solid rgb(196, 196, 23);
+}
+.red {
+  background-color: rgb(216, 35, 35);
+  border: 5px solid rgb(154, 4, 4);
 }
 .rematchBtn {
   cursor: pointer;
@@ -45,4 +53,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 20px solid rgb(24, 24, 179);
+  bottom: -12px;
+  z-index: -1;
+
+  @media (min-width: 768px) {
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 40px solid rgb(24, 24, 179);
+    bottom: -30px;
+  }
+}
+
+.triangleLeft {
+  left: 0;
+  transform: translate(-47%, 0);
+}
+.triangleRight {
+  right: 0;
+  transform: translate(47%, 0);
 }

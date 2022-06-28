@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Alert from "../Alert";
 import DropBtn from "../DropBtn";
 import clsx from "clsx";
 import styles from "./styles.module.scss";
@@ -34,13 +35,10 @@ function Board() {
   };
   return (
     <div className={styles.outer}>
-      <h2 className={styles.title}>
-        {winner ? `${winner} wins!` : redTurn ? `Red's Turn` : `Yellow's Turn`}
-      </h2>
-
+      <Alert winner={winner} redTurn={redTurn} />
       {winner ? (
         <button onClick={toRestart} className={styles.rematchBtn}>
-          REMATCH?
+          REMATCH
         </button>
       ) : null}
 
@@ -89,6 +87,8 @@ function Board() {
             </div>
           );
         })}
+        <div className={clsx(styles.triangle, styles.triangleLeft)}></div>
+        <div className={clsx(styles.triangle, styles.triangleRight)}></div>
       </div>
     </div>
   );
