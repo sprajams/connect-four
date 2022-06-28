@@ -48,13 +48,11 @@ function Board() {
                   <div key={(i, n)} className={styles.square}>
                     <div
                       className={clsx(
-                        y === "Y" && styles.yellow,
-                        y === "R" && styles.red,
+                        y === "Yellow" && styles.yellow,
+                        y === "Red" && styles.red,
                         styles.circle
                       )}
-                    >
-                      {y}
-                    </div>
+                    ></div>
                   </div>
                 );
                 // }
