@@ -21,9 +21,25 @@ function Board() {
     setWinner(checkForWinner(board));
   }, [board]);
 
+  const toRestart = () => {
+    setBoard([
+      [null, null, null, null, null, null],
+      [null, null, null, null, null, null],
+      [null, null, null, null, null, null],
+      [null, null, null, null, null, null],
+      [null, null, null, null, null, null],
+      [null, null, null, null, null, null],
+      [null, null, null, null, null, null],
+    ]);
+  };
   return (
     <div>
-      <h2 className={styles.title}>{redTurn ? `Red's` : `Yellow's`} Turn</h2>
+      <h2 className={styles.title}>
+        {winner ? `${winner} wins!` : redTurn ? `Red's Turn` : `Yellow's Turn`}
+      </h2>
+
+      {winner ? <button onClick={toRestart}>REMATCH?</button> : null}
+
       <div className={styles.wrap}>
         {board.map((x, i) => {
           const handleClick = () => {
@@ -48,13 +64,11 @@ function Board() {
                   <div key={(i, n)} className={styles.square}>
                     <div
                       className={clsx(
-                        y === "Y" && styles.yellow,
-                        y === "R" && styles.red,
+                        y === "Yellow" && styles.yellow,
+                        y === "Red" && styles.red,
                         styles.circle
                       )}
-                    >
-                      {y}
-                    </div>
+                    ></div>
                   </div>
                 );
                 // }
@@ -63,8 +77,8 @@ function Board() {
                 redTurn={redTurn}
                 handleClick={handleClick}
                 columnNum={x}
-                // if the array in the column does not have any more null elements, then disable the button so user cannot add more chips
-                disableBtn={!x.includes(null)}
+                // disable drop button if the column is full OR if there is a winner
+                disableBtn={!x.includes(null) || winner}
               />
             </div>
           );
